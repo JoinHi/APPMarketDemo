@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_height="230dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#000000"
+            android:text="为您推荐"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/tv_recycler_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginRight="20dp"
+            android:id="@+id/tv_more_group_item"
+            android:text="更多"
+            android:textSize="14sp"
+            android:textColor="#689F39"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/tv_recycler_item"
+        android:id="@+id/recycler_group_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

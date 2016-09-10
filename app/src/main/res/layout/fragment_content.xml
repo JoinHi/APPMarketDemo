@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager_cententfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_tablayoutcontainer"
+        app:cardElevation="@dimen/elevation_height"
+        app:cardCornerRadius="0dp"
+        app:cardBackgroundColor="#00000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_marginTop="200dp"
+            android:background="#3F51B5"
+            android:id="@+id/view_anim_contentfg"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+        <android.support.design.widget.TabLayout
+            android:layout_marginTop="200dp"
+            android:background="#3F51B5"
+            app:tabIndicatorColor="#FFf"
+            app:tabSelectedTextColor="#fff"
+            app:tabTextColor="#b1b0b1"
+            android:id="@+id/tabLayout_cententfragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.design.widget.TabLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
