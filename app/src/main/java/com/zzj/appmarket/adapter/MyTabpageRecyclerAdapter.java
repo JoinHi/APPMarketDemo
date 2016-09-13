@@ -79,6 +79,7 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
                                 recyclerView.smoothScrollBy(455+left-35,0);
                             }else {
                                 recyclerView.smoothScrollBy(left-35,0);
+                                
                             }
                         }
                     }
