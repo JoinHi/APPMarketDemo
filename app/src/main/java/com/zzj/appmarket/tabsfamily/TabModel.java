@@ -1,4 +1,4 @@
-package com.zzj.appmarket.model;
+package com.zzj.appmarket.tabsfamily;
 
 import com.zzj.appmarket.TabFragmentIntfSet;
 import com.zzj.appmarket.bean.AppInfoBean;

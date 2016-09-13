@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -59,8 +60,11 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof MyTabpageRecyclerViewHolder) {
+            HeaderAndFooterWrapper adapter = new HeaderAndFooterWrapper(new GalleryChildAdapter(mHomeBean.list));
+            ProgressBar progressBar = new ProgressBar(mContext);
+            adapter.addFooterView(progressBar);
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
-            ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setAdapter(new GalleryChildAdapter(mHomeBean.list));
+            ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setAdapter(adapter);
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.scrollToPosition((int) (positions[position]));
 
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -85,9 +89,9 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
                     super.onScrolled(recyclerView, dx, dy);
                     int m = recyclerView.getChildAdapterPosition(recyclerView.getChildAt(0));
                     positions[position] = m;
-//                        Log.i("___", m + "");
                 }
             });
+
         }else if (holder instanceof MyTabHeaderRecyclerVIewHolder){
 
         }

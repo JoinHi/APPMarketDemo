@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zzj.appmarket.R;
+import com.zzj.appmarket.tabsfamily.TabFragment;
 import com.zzj.appmarket.view.ContentView;
 
 /**
@@ -60,7 +60,7 @@ public class ContentFragment extends Fragment {
 
         @Override
         public android.support.v4.app.Fragment getItem(int position) {
-            return TabFragment.getInstance(mToolbar,tablayoutContainer,position);
+            return TabFragment.getInstance(mToolbar, tablayoutContainer, position);
         }
 
         @Override

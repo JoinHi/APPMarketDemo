@@ -2,11 +2,11 @@ package com.zzj.appmarket.tabsfamily;
 
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
 import com.zzj.appmarket.TabFragmentIntfSet;
 import com.zzj.appmarket.bean.AppInfoBean;
 import com.zzj.appmarket.bean.HomeBean;
 import com.zzj.appmarket.bean.TabBeans;
-import com.zzj.appmarket.model.TabModel;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class TabPresenter implements TabFragmentIntfSet.PresenterI{
         tabModel.getPageInfos().subscribe(new Action1<TabBeans>() {
             @Override
             public void call(TabBeans tabBeans) {
-                Log.i("------", tabBeans.getAppInfoBeans().toString() + "::" + tabBeans.getHomeBean().toString());
+                Logger.d(tabBeans.getAppInfoBeans().toString() + "::" + tabBeans.getHomeBean().toString());
             }
         }, new Action1<Throwable>() {
             @Override
@@ -47,7 +47,7 @@ public class TabPresenter implements TabFragmentIntfSet.PresenterI{
             public void call(HomeBean homeBean) {
                 if (homeBean !=null && homeBean.list != null)
                 homeBean.list.remove(0);
-                Log.i("________", homeBean.picture.toString() + "|||||||"+homeBean.list.toString());
+                Logger.i( homeBean.picture.toString() + "|||||||" + homeBean.list.toString());
                 mActivity.loadFirstDateSuccess(homeBean);
             }
         }, new Action1<Throwable>() {
@@ -62,12 +62,12 @@ public class TabPresenter implements TabFragmentIntfSet.PresenterI{
         tabModel.getAppInfo().subscribe(new Action1<List<AppInfoBean>>() {
             @Override
             public void call(List<AppInfoBean> beans) {
-                Log.i("________", "____"+beans.toString());
+                Logger.i( "____" + beans.toString());
             }
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-                Log.i("________", "__throwable__");
+                Logger.i("________", "__throwable__");
             }
         });
     }

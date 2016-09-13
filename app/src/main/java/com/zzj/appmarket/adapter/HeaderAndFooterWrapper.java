@@ -1,9 +1,13 @@
 package com.zzj.appmarket.adapter;
 
+import android.content.Context;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.orhanobut.logger.Logger;
+import com.zzj.appmarket.ViewHolder;
 
 /**
  * Created by bjh on 16/9/9.
@@ -15,6 +19,8 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     private SparseArrayCompat<View> mHeaderViews = new SparseArrayCompat<>();
     private SparseArrayCompat<View> mFooterViews = new SparseArrayCompat<>();
     private RecyclerView.Adapter mInnerAdapter;
+    private RecyclerView mRecyclerView;
+
     public HeaderAndFooterWrapper(RecyclerView.Adapter adapter){
         mInnerAdapter = adapter;
     }
@@ -25,6 +31,11 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     }
     public void addFooterView(View view){
         mFooterViews.put(mFooterViews.size() + BASE_ITEM_TYPE_FOOTER,view);
+    }
+    public void removeFooterView(View view){
+        mFooterViews.delete(mFooterViews.indexOfValue(view));
+        notifyDataSetChanged();
+
     }
     public int getHeadersCount(){
         return mHeaderViews.size();
@@ -42,12 +53,13 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
         return position >= getHeadersCount() + getRealItemCount();
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mHeaderViews.get(viewType) != null){
-//            RecyclerView.ViewHolder holder = RecyclerView.ViewHolder.createV
-            return null;
+            return ViewHolder.createViewHolder(parent.getContext(),mHeaderViews.get(viewType));
+        }
+        if (mFooterViews.get(viewType) != null){
+            return ViewHolder.createViewHolder(parent.getContext(),mFooterViews.get(viewType));
         }
 
         return mInnerAdapter.onCreateViewHolder(parent,viewType);
@@ -57,7 +69,7 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (isHeaderViewPos(position) || isFooterViewPos(position))
             return;
-        mInnerAdapter.onBindViewHolder(holder,position);
+        mInnerAdapter.onBindViewHolder(holder,position - getHeadersCount());
     }
 
     @Override
@@ -78,6 +90,7 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+        mRecyclerView = recyclerView;
     }
 
     @Override

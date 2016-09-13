@@ -1,42 +1,21 @@
-package com.zzj.appmarket.fragment;
+package com.zzj.appmarket.tabsfamily;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.zzj.appmarket.R;
 import com.zzj.appmarket.TabFragmentIntfSet;
-import com.zzj.appmarket.adapter.GalleryChildAdapter;
 import com.zzj.appmarket.adapter.MyTabpageRecyclerAdapter;
 import com.zzj.appmarket.bean.HomeBean;
-import com.zzj.appmarket.conf.Constants;
-import com.zzj.appmarket.tabsfamily.TabPresenter;
-import com.zzj.appmarket.utils.RxBus;
-import com.zzj.appmarket.view.SplishView;
-
-import java.util.ArrayList;
-
-import rx.Subscription;
-import rx.functions.Action1;
 
 /**
  * Created by bjh on 16/8/23.
@@ -129,8 +108,6 @@ public class TabFragment extends Fragment implements TabFragmentIntfSet.ViewI{
                 closeAnim();
                 isShow = false;
             }
-//            float top = mTablayout.getY();
-//            System.out.println(top + "::" + height + "__"+tabHeight+"__" + tablayoutY);
         }
 
         @Override
