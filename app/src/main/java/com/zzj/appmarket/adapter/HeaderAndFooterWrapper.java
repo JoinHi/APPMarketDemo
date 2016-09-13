@@ -1,13 +1,9 @@
 package com.zzj.appmarket.adapter;
 
-import android.content.Context;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.orhanobut.logger.Logger;
-import com.zzj.appmarket.ViewHolder;
 
 /**
  * Created by bjh on 16/9/9.
