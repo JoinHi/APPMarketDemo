@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.zzj.appmarket.R;
 import com.zzj.appmarket.TabFragmentIntfSet;
+import com.zzj.appmarket.adapter.HeaderAndFooterWrapper;
 import com.zzj.appmarket.adapter.MyTabpageRecyclerAdapter;
 import com.zzj.appmarket.bean.HomeBean;
 
@@ -68,9 +69,10 @@ public class TabFragment extends Fragment implements TabFragmentIntfSet.ViewI{
     @Override
     public void loadFirstDateSuccess(HomeBean homeBean) {
         mHomeBean = homeBean;
-        mRecyclerView.setAdapter(new MyTabpageRecyclerAdapter(this,mHomeBean));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mRecyclerView.addOnScrollListener(new PageScrollListener());
+        mRecyclerView.setAdapter(new HeaderAndFooterWrapper(new MyTabpageRecyclerAdapter(this, mHomeBean)));
+
+//        mRecyclerView.addOnScrollListener(new PageScrollListener());
     }
 
     /**

@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.orhanobut.logger.Logger;
 import com.zzj.appmarket.R;
 import com.zzj.appmarket.base.BaseApplication;
 import com.zzj.appmarket.bean.HomeBean;
@@ -43,7 +44,7 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
         }else {
             type = 2;
         }
-        return type;
+        return 2;
     }
 
     @Override
@@ -60,9 +61,9 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof MyTabpageRecyclerViewHolder) {
-            HeaderAndFooterWrapper adapter = new HeaderAndFooterWrapper(new GalleryChildAdapter(mHomeBean.list));
-            ProgressBar progressBar = new ProgressBar(mContext);
-            adapter.addFooterView(progressBar);
+            final HeaderAndFooterWrapper adapter = new HeaderAndFooterWrapper(new GalleryChildAdapter(mHomeBean.list));
+//            final ProgressBar progressBar = new ProgressBar(mContext);
+//            adapter.addFooterView(progressBar);
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.setAdapter(adapter);
             ((MyTabpageRecyclerViewHolder)holder).holder_recycler.scrollToPosition((int) (positions[position]));
@@ -73,13 +74,12 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
                     super.onScrollStateChanged(recyclerView, newState);
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         View childView = recyclerView.getChildAt(0);
-                        if (childView != null){
+                        if (childView != null) {
                             int left = recyclerView.getChildAt(0).getLeft();
-                            if (left <-222){
-                                recyclerView.smoothScrollBy(455+left-35,0);
-                            }else {
-                                recyclerView.smoothScrollBy(left-35,0);
-
+                            if (left < -222) {
+                                recyclerView.smoothScrollBy(455 + left - 35, 0);
+                            } else {
+                                recyclerView.smoothScrollBy(left - 35, 0);
                             }
                         }
                     }
@@ -92,7 +92,8 @@ public class MyTabpageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.
                     positions[position] = m;
                 }
             });
-
+//            adapter.removeFooterView(progressBar);
+//            notifyDataSetChanged();
         }else if (holder instanceof MyTabHeaderRecyclerVIewHolder){
 
         }
